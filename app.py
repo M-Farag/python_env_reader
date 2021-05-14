@@ -3,8 +3,9 @@ import configparser as envParser
 envParser = envParser.ConfigParser()
 envParser.read('.env')
 
-def env(key_name:str):
-    print(envParser.get('MAIN',key_name))
+def env(key_name:str,section_name='MAIN'):
+    return envParser.get(section_name,key_name,fallback=False)
 
 
-env('key_1')
+my_key = env('key_1')
+print(my_key)
